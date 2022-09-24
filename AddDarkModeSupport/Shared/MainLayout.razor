@@ -1,0 +1,98 @@
+﻿@using static AddDarkModeSupport.Shared.NavMenu
+
+@inherits LayoutComponentBase
+
+<PageTitle>Dark Mode Support</PageTitle>
+
+<div class="flex flex-col sm:flex-row w-screen  h-screen relative @darkMode">
+    <NavMenu MenuItems="menuitems" />
+
+    <main class="bg-white w-full overflow-auto  dark:bg-gray-400">
+        <!--logout, user info etc -->
+        <header class="bg-gray-100 hidden sm:flex h-14 justify-end">
+            <div class="flex justify-end align-items-center space-x-2 mr-10 mt-3">
+                <span class="text-sm-center text-gray-800">Light</span>
+                <div>
+                    <input type="checkbox" id="toggle" class="hidden"/>
+                    <label for="toggle" @onclick=ToggleDarkMode>
+                        <div class="w-10 h-6 flex align-items-center bg-gray-400 rounded-full pl-1 pt-1">
+                            <div class="toggle-dot w-4 h-4 bg-white rounded-full shadow-md transform duration-300 ease-in-out"></div>
+                        </div>
+                    </label>
+                </div>
+                <span class="text-sm-center text-gray-400">Dark</span>
+            </div>
+        </header>
+
+        <!-- work area -->
+        <section class="m-4">
+            @Body
+        </section>
+    </main>
+</div>
+
+@code {
+    private List<BaseMenuItem> menuitems = new();
+
+    private string burgerStyle = "hidden";
+    private int menuIndex = 1;
+    private string darkMode = "";
+
+    protected override async Task OnInitializedAsync()
+    {
+        BaseMenuItem item = new();
+        item.Name = "Home";
+        item.Page = "/";
+        item.Order = 1;
+        item.IconName = "home";
+        menuitems!.Add(item);
+
+        item = new();
+        item.Name = "Counter";
+        item.Page = "/counter";
+        item.Order = 2;
+        item.IconName = "calculator";
+        menuitems.Add(item);
+        await Task.CompletedTask;
+
+        item = new();
+        item.Name = "Fetch Data";
+        item.Page = "/fetchdata";
+        item.Order = 3;
+        item.IconName = "list";
+        menuitems.Add(item);
+        await Task.CompletedTask;
+    }
+
+    //handle the burger clicks
+    private void BurgerClick()
+    {
+        if (string.IsNullOrEmpty(burgerStyle))
+        {
+            burgerStyle = "hidden";
+        }
+        else
+        {
+            burgerStyle = "";
+        }
+    }
+
+    //handle the link nav and style
+    private void SetMenu(int index)
+    {
+        menuIndex = index;
+    }
+
+    private void ToggleDarkMode()
+    {
+        if (string.IsNullOrEmpty(darkMode))
+        {
+            darkMode = "dark";
+        }
+        else
+        {
+            darkMode = "";
+        }
+        StateHasChanged();
+    }
+}
