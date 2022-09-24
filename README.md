@@ -1,13 +1,13 @@
 # Add Dark Mode Support with TailwindCss
 
-I see a lot of web application that allows the user to switch between light mode and dark mode.  This project show how I implemented this feature
+I see a lot of web applications that allow the user to switch between light mode and dark mode.  This project shows how I implemented this feature using TailwindCss
 
 by [CodingWithDavid](http://twitter.com/CodingwithDavid)
 
 
 ## Why
 
-I was planning on adding this feature to several on my projects and I needed to know how to implemented it.  The best to learn how, is to do it.
+I was planning on adding this feature to several on my current projects and I needed to know how to implemented it.  The best way to learn how, is to do it.
 
 ## Getting Started
 
@@ -27,8 +27,7 @@ I was planning on adding this feature to several on my projects and I needed to 
 1. The basic Blazer server application styled with Tailwinds
 2. How to configure TailwindCss for supporting dark mode via class method
 3. Class toggle when a check box is clicked
-4. Where to place the class that can control the over light or dark style
-   
+4. Where to place the class that can control the over light or dark style   
 
 
 ## Problems or Suggestions
